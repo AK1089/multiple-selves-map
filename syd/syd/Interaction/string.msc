@@ -1,0 +1,2 @@
+# syd::Interaction(type 0 on 123 45 678 Theta at t=90)
+@return "syd::Interaction(type {{this.interaction_type}} on {{this.location}} at t={{this.tick_number}})"

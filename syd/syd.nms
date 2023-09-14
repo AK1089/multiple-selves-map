@@ -1,0 +1,84 @@
+@namespace syd
+
+
+	# governs an interaction between a shadow and the physical world
+	@class Interaction
+
+		# creates an interaction, based on a block type and the interaction type
+		Interaction(Int tick_number, Int interaction_type, BlockLocation location)
+
+		# the data contained within / provided by the constructor	
+		Int tick_number
+		Int interaction_type
+		BlockLocation location
+
+		# activates the interaction (called during playback of a shadow)
+        do()
+
+		String string()
+
+	@endclass
+
+
+	# represents a shadow
+	@class PastSelf
+
+		# created with a blank constructor, all important data is created during a call to record(...)
+		PastSelf()
+
+		# records a player's movement and actions over a time period, for later playback
+		record(Player player, Int duration, Long start_time)
+		
+		# playback() is just successive calls to tick(t_i), which recreates what the shadow did at time t_i
+		playback()
+        tick(Int tick_number)
+
+		# stores the full history of where/what the shadow is to move/do at each tick
+        Position[] position_history
+        syd::Interaction[] interaction_history
+
+		# list of commands to run to set position and rotation per-tick
+		String[] commands_loc
+		String[] commands_rot
+
+		# when and for how long the shadow's recording started, and the tag for the armor stand
+		Long start_time
+		Int duration
+		String as_tag
+
+		String string()
+		Player player
+		String world
+
+	@endclass
+
+
+	# a class for a player's attempt of a level
+	@class Attempt
+
+		# needs to specify the player and the level, as well as data about the level
+		Attempt(Int level, Player player, Int max_attempts, Int attempt_duration)
+        Player player
+        Int level
+		Int max_attempts
+		Int attempt_duration
+
+		# collects a list of shadows to play back when replaying the level
+		syd::PastSelf[] past_selves
+
+		# if not first attempt, plays back all previous shadow iterations
+		# if not final attempt, records the next shadow iteration
+		run(Int attempt_number)
+
+		String string()
+
+	@endclass
+
+
+	# stores the current attempt per-player to work with
+	relative Attempt current_attempt
+
+	# displays some text to me in particular
+	debug(String output)
+
+@endnamespace

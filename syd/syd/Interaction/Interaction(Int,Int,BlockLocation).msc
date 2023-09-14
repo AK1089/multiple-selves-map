@@ -1,0 +1,8 @@
+# creates an interaction, based on a block type and the interaction type
+# see the do() method for an enumeration of the interaction types
+
+@var this.tick_number = tick_number
+@var this.interaction_type = interaction_type
+@var this.location = location
+
+@return this

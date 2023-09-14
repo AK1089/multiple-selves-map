@@ -1,0 +1,2 @@
+@fast
+@bypass /tellraw AK1089 [{"text":"DEBUG: ","color":"red"},{"text":"{{output}}","color":"white"}]

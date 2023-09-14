@@ -1,0 +1,7 @@
+# interaction_type is as follows:
+# 0 - destroy this block
+# 1 - flip a lever at this location
+# 2 - press a button at this location
+# 3 - trapdoor flip
+
+@var syd::debug("&aExecuting action &e{{this.interaction_type}} &aat &e{{this.location}}&a!")

@@ -1,0 +1,2 @@
+# syd::Attempt(player=AK1089, level=1, duration=400t, attempts=3, #shadows=1)
+@return "syd::Attempt(player={{this.player}}, level={{this.level}}, duration={{this.attempt_duration}}t, attempts={{this.max_attempts}}, #shadows={{this.past_selves.length()}})"

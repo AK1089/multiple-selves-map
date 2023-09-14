@@ -1,0 +1,34 @@
+# record(Player player, Int duration, Long start_time)
+# records a player's movement and actions over a time period, for later playback
+# player is the player, duration is in ticks, start_time is from system::currentTimeMillis()
+
+@var this.start_time = start_time
+@var this.duration = duration
+@var this.player = player
+
+@var this.world = player.getWorld().toLowerCase()
+
+@var this.position_history = Position[]
+@var this.commands_loc = String[]
+@var this.commands_rot = String[]
+
+@define String[] placeholder
+
+@var syd::debug("starting recording at {{start_time}}: duration {{duration}}")
+
+@for Int i in list::range(0, duration)
+    @var this.position_history.append(player.getPosition())
+    @delay 1
+@done
+
+@var syd::debug("finished recording")
+
+@for Position pos in this.position_history
+    @var placeholder = pos.string().split(" ")
+    @var this.commands_loc.append("in minecraft:{{this.world}} run teleport @e[type=armor_stand,tag={{this.as_tag}}] {{Float(placeholder[0])}} {{Float(placeholder[1])}} {{Float(placeholder[2])}}")
+    @var this.commands_rot.append("merge entity @e[type=armor_stand,tag={{this.as_tag}},limit=1] {Pose: {Head: [{{Float(placeholder[4])}}f,0f,0f]}, Rotation: [{{Float(placeholder[3])}}f,0f]}")
+@done
+
+@var syd::debug("commands_loc: {{this.commands_loc[5]}}")
+@var syd::debug("commands_rot: {{this.commands_rot[5]}}")
+

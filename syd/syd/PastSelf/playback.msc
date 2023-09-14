@@ -1,0 +1,16 @@
+# playback() is just successive calls to tick(t_i), which recreates what the shadow did at time t_i
+
+@var syd::debug("summoning armor stand, tags {{this.as_tag}}")
+@bypass /execute in {{this.world}} run summon minecraft:armor_stand 3905.25 88.00 -2190.99 {Tags:["{{this.as_tag}}"], Invulnerable:1b, ArmorItems:[{id:"minecraft:leather_boots", Count:1b, tag:{display:{color:1908001} } }, {id:"minecraft:leather_leggings", Count:1b, tag:{display:{color:1908001} } }, {id:"minecraft:leather_chestplate", Count:1b, tag:{display:{color:1908001} } }, {id:"minecraft:player_head", Count:1b, tag:{SkullOwner:"{{this.player}}"} }], NoBasePlate:1b, ShowArms:1b, DisabledSlots:16191}
+
+@for Int i in list::range(0, this.duration)
+    @var this.tick(i)
+    @delay 1
+@done
+
+@var syd::debug("ticked completely, now killing")
+
+@bypass /minecraft:kill @e[tag={{this.as_tag}},type=armor_stand]
+
+
+

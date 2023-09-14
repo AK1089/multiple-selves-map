@@ -1,0 +1,15 @@
+# Attempt(Int level, Player player, Int max_attempts, Int attempt_duration)
+# level number, one-indexed
+# player who is actually attempting it
+# max attempt count (including last run)
+# duration of each attempt, in ticks
+
+@var this.level = level
+@var this.player = player
+
+@var this.max_attempts = max_attempts
+@var this.attempt_duration = attempt_duration
+
+@var this.past_selves = syd::PastSelf[]
+
+@return this

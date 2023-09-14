@@ -1,0 +1,2 @@
+# syd::PastSelf(duration=80t, as_tag=sydas_1234567890)
+@return "syd::PastSelf(duration={{this.duration}}t, as_tag={{this.as_tag}})"

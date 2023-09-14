@@ -1,0 +1,7 @@
+# created with a blank constructor, all important data is created during a call to record(...)
+
+@var this.position_history = Position[] 
+@var this.interaction_history = syd::Interaction[]
+@var this.as_tag = "sydas_" + String(math::randomInt())
+
+@return this
