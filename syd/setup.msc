@@ -1,3 +1,2 @@
-
-@var syd::current_attempt = syd::Attempt(1, player, 3, 60)
+@var syd::current_attempt = syd::Attempt(1, player, 3, 200)
 @player &7set your attempt to &e{{syd::current_attempt}}&7.

@@ -12,4 +12,6 @@
 
 @var this.past_selves = syd::PastSelf[]
 
+@var this.current_attempt_number = 1
+
 @return this

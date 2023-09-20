@@ -72,11 +72,14 @@
 
 		String string()
 
+		Int current_attempt_number
+
 	@endclass
 
 
 	# stores the current attempt per-player to work with
 	relative Attempt current_attempt
+	Boolean debug_output = false
 
 	# displays some text to me in particular
 	debug(String output)

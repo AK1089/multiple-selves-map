@@ -5,7 +5,14 @@
 
 @fast
 
+@if attempt_number == 0
+    @var attempt_number = this.current_attempt_number
+@fi
+
 @var syd::debug("running attempt {{attempt_number}}")
+
+@bypass /title {{this.player}} subtitle {"text":"{{Int(this.attempt_duration / 20)}} seconds","color":"yellow"}
+@bypass /title {{this.player}} title {"text":"Attempt {{attempt_number}}/{{this.max_attempts}}","color":"green"}
 
 @for Int self in list::range(0, attempt_number - 1)
     @console /func execute syd::current_attempt[Player("{{this.player}}")].past_selves[{{self}}].playback()
@@ -16,4 +23,16 @@
     @define syd::PastSelf new_shadow = syd::PastSelf()
     @var new_shadow.record(this.player, this.attempt_duration, system::currentTimeMillis())
     @var this.past_selves.append(new_shadow)
+@else
+    @for Int i in list::range(0, this.attempt_duration)
+        @delay 1
+    @done
+@fi
+
+@var this.current_attempt_number = this.current_attempt_number + 1
+
+@if Block(this.player.getLocation().asBlockLocation()).getBlockType().toLowerCase() == "yellow_carpet"
+    @bypass /title {{this.player}} title {"text":"You win!","color":"green"}
+@else
+    @bypass /kill
 @fi
