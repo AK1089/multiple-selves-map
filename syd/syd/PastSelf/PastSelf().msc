@@ -3,5 +3,6 @@
 @var this.position_history = Position[] 
 @var this.interaction_history = syd::Interaction[]
 @var this.as_tag = "sydas_" + String(math::randomInt())
+@var this.current_tick = 0
 
 @return this

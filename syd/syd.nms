@@ -13,7 +13,7 @@
 		BlockLocation location
 
 		# activates the interaction (called during playback of a shadow)
-        do()
+        do(Player player)
 
 		String string()
 
@@ -36,6 +36,7 @@
 		# stores the full history of where/what the shadow is to move/do at each tick
         Position[] position_history
         syd::Interaction[] interaction_history
+		Int current_tick
 
 		# list of commands to run to set position and rotation per-tick
 		String[] commands_loc
@@ -65,6 +66,7 @@
 
 		# collects a list of shadows to play back when replaying the level
 		syd::PastSelf[] past_selves
+		syd::PastSelf new_shadow
 
 		# if not first attempt, plays back all previous shadow iterations
 		# if not final attempt, records the next shadow iteration
@@ -79,7 +81,10 @@
 
 	# stores the current attempt per-player to work with
 	relative Attempt current_attempt
-	Boolean debug_output = false
+	Boolean debug_output = true
+
+	# the world the map is in
+	String world = "minecraft:theta"
 
 	# displays some text to me in particular
 	debug(String output)

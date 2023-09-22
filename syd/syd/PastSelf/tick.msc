@@ -5,4 +5,9 @@
 @bypass /execute {{this.commands_loc[tick_number]}}
 @bypass /data {{this.commands_rot[tick_number]}}
 
-# /execute in minecraft:theta run teleport @e[type=minecraft:armor_stand,tag=sydas_-1607671374] 3901.629 88.0 -2207.143
+@for syd::Interaction inter in this.interaction_history
+    @if inter.tick_number == tick_number
+        @var syd::debug("activating interaction {{inter}}")
+        @var inter.do(this.player)
+    @fi
+@done

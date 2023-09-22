@@ -10,6 +10,7 @@
 @var this.max_attempts = max_attempts
 @var this.attempt_duration = attempt_duration
 
+@var this.new_shadow = null
 @var this.past_selves = syd::PastSelf[]
 
 @var this.current_attempt_number = 1

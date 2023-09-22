@@ -4,4 +4,16 @@
 # 2 - press a button at this location
 # 3 - trapdoor flip
 
+@fast
 @var syd::debug("&aExecuting action &e{{this.interaction_type}} &aat &e{{this.location}}&a!")
+
+@define String[] keys = String["3862 91 -2204", "3859 95 -2199"]
+@define String[] values = String["3860 92 -2200", "3858 96 -2198"]
+
+@define Int index = keys.find(this.location.string().replace(" Theta", ""))
+
+@if this.interaction_type == 2
+    @bypass /execute in {{syd::world}} run setblock {{values[index]}} redstone_block
+    @delay 20
+    @bypass /execute in {{syd::world}} run setblock {{values[index]}} air
+@fi

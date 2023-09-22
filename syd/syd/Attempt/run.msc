@@ -20,9 +20,9 @@
 @done
 
 @if attempt_number != this.max_attempts
-    @define syd::PastSelf new_shadow = syd::PastSelf()
-    @var new_shadow.record(this.player, this.attempt_duration, system::currentTimeMillis())
-    @var this.past_selves.append(new_shadow)
+    @var this.new_shadow = syd::PastSelf()
+    @var this.new_shadow.record(this.player, this.attempt_duration, system::currentTimeMillis())
+    @var this.past_selves.append(this.new_shadow)
 @else
     @for Int i in list::range(0, this.attempt_duration)
         @delay 1

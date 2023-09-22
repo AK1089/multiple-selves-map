@@ -1,2 +1,3 @@
-@var syd::current_attempt = syd::Attempt(1, player, 3, 200)
-@player &7set your attempt to &e{{syd::current_attempt}}&7.
+@var syd::current_attempt = syd::Attempt(2, player, 5, 400)
+@player &aSuccessfully reset your progress!
+# @player &7set your attempt to &e{{syd::current_attempt}}&7.

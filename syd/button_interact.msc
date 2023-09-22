@@ -1,0 +1,2 @@
+@global_cooldown 21
+@var syd::current_attempt.new_shadow.interaction_history.append(syd::Interaction((syd::current_attempt.new_shadow.current_tick), 2, block.getLocation()))

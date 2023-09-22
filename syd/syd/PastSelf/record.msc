@@ -18,6 +18,7 @@
 
 @for Int i in list::range(0, duration)
     @var this.position_history.append(player.getPosition())
+    @var this.current_tick = i
     @delay 1
 @done
 
